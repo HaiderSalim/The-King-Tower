@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6255280194286518909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6255280194286518911}
+  - component: {fileID: 6255280194286518910}
+  - component: {fileID: 6255280194286521728}
+  - component: {fileID: 6255280194286521729}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6255280194286518911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255280194286518909}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.26064944, y: 0.044845123, z: -0.016831666}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6255280194286518910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255280194286518909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1967e25f75e107d41b3dd05d8f098c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  Towers:
+  - {fileID: 5304824487014186839, guid: 0ba6cedca2cf2ab4883330b8deee6fd3, type: 3}
+  Current_Tower: {fileID: 0}
+--- !u!114 &6255280194286521728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255280194286518909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953a2c6ce4c8daf41afeaea007240725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Paths:
+  - {fileID: 0}
+  - {fileID: 0}
+  SpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  Enemys:
+  - {fileID: 1524387951071174519, guid: fe842e9066a28a449ae4059b56ce32e4, type: 3}
+  - {fileID: 5859793101559681312, guid: 39749bed362d64d45a31881cf6a2c881, type: 3}
+  - {fileID: 4926618335463154839, guid: 87515708ccacd6640b39743840328665, type: 3}
+  WaveEnemyAmount: 5
+--- !u!114 &6255280194286521729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255280194286518909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4317bad95e51b4e934f24bac803091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaveNumber: 1
+  isSpawned: 0
