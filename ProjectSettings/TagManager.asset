@@ -7,11 +7,12 @@ TagManager:
   - Way Point
   - enemy
   - Path
+  - Outline
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 

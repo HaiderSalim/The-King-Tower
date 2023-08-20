@@ -40,8 +40,8 @@ public class WayPoinFollowSystem : MonoBehaviour
                 if (Waypoints[WayPointindex].position == this.transform.position)
                 {
                     WayPointindex++;
-                    Debug.Log(Waypoints.Count);
-                    Debug.Log(WayPointindex);
+                    //Debug.Log(Waypoints.Count);
+                    //Debug.Log(WayPointindex);
                 }
             }
         }
