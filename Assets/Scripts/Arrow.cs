@@ -18,6 +18,10 @@ public class Arrow : MonoBehaviour
             float angle = -Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
             ArrowBase.eulerAngles = new Vector3(0, 0, angle);
         }
+        else if (Target == null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,6 +30,7 @@ public class Arrow : MonoBehaviour
         Debug.Log(collision.name);
         if (collision.gameObject.tag == "enemy")
         {
+            collision.gameObject.GetComponent<EnemyInformation>().Health -= Damage;
             Destroy(this.gameObject);
         }
     }

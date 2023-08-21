@@ -221,12 +221,14 @@ MonoBehaviour:
   Projectile_Speed: 0.5
   Attack_Damage: 1
   Attack_Radius: 0.4
-  Attack_Delay: 0.6
+  Attack_Delay: 1.2
   Enemy_layer:
     serializedVersion: 2
     m_Bits: 8
   Current_Target: {fileID: 0}
   Tower_Radius_Indecator: {fileID: 4254347794802692076}
+  IsPlaceabal: 0
+  IsPlacedDown: 0
 --- !u!50 &-538168845628750784
 Rigidbody2D:
   serializedVersion: 4
@@ -272,5 +274,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.05, y: 0.05}
   m_EdgeRadius: 0

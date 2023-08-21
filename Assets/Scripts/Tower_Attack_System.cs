@@ -17,6 +17,7 @@ public class Tower_Attack_System : MonoBehaviour
     [SerializeField] private Transform Current_Target;
     public GameObject Tower_Radius_Indecator;
     public bool IsPlaceabal = false;
+    public bool IsPlacedDown = false;
 
     private void Start()
     {
@@ -53,7 +54,7 @@ public class Tower_Attack_System : MonoBehaviour
     {
         if (Current_Target != null) 
         {
-            if (Attack_Delay >= Attack_Temp_Delay)
+            if (Attack_Delay >= Attack_Temp_Delay && IsPlacedDown)
             {
                 GameObject obj = Instantiate(Projectile, Projectile_Spawn.transform.position, Quaternion.identity);
                 Arrow arroecomp = obj.GetComponent<Arrow>();
@@ -71,15 +72,25 @@ public class Tower_Attack_System : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Outline"))
+        if (collision.CompareTag("Tower OutLine"))
         {
             Debug.Log("Place");
             IsPlaceabal = true;
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Tower OutLine"))
+        {
+            if(IsPlaceabal)
+            {
+                this.transform.position = collision.transform.position;
+            }
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Outline"))
+        if (collision.CompareTag("Tower OutLine"))
         {
             Debug.Log("unable to place");
             IsPlaceabal = false;

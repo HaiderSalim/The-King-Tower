@@ -7,6 +7,8 @@ TagManager:
   - Way Point
   - enemy
   - Path
+  - Tower OutLine
+  - Resources OutLine
   - Outline
   layers:
   - Default

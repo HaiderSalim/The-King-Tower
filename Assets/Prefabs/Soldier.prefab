@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4918830978460299950}
   - component: {fileID: -7571863779105736626}
   - component: {fileID: 7163043639151783396}
+  - component: {fileID: 165109614921000827}
   m_Layer: 3
   m_Name: Soldier
   m_TagString: enemy
@@ -100,9 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaypointPath: {fileID: 0}
-  Waypoints:
-  - {fileID: 0}
-  Speed: 0.28
+  Waypoints: []
+  Speed: 0.16
   WayPointindex: 0
 --- !u!61 &-7571863779105736626
 BoxCollider2D:
@@ -151,3 +151,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &165109614921000827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524387951071174519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa37ee009899094ca6677120691fb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 5
+  Damage: 1
