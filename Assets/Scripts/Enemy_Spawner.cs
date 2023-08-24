@@ -171,7 +171,7 @@ public class Enemy_Spawner : MonoBehaviour
     private void SpawnWave5(int amount)
     {
         Transform spawn;
-        int multiplayer = 0;
+        int Multipul = 0;
         float offset = 0;
         for (int i = 0; i < amount; i++)
         {
@@ -179,15 +179,15 @@ public class Enemy_Spawner : MonoBehaviour
             spawn = SpawnPoints[spawnnum];
             if (spawnnum <= (SpawnPoints.Length - 1) / 2)
             {
-                multiplayer = 1;
+                Multipul = 1;
             }
             else if (spawnnum > (SpawnPoints.Length - 1) / 2)
             {
-                multiplayer = -1;
+                Multipul = -1;
             }
 
             GameObject obj = Instantiate(Enemys[0],
-                new Vector3(SpawnPoints[spawnnum].position.x + offset * multiplayer, SpawnPoints[spawnnum].position.y, SpawnPoints[spawnnum].position.z),
+                new Vector3(SpawnPoints[spawnnum].position.x + offset * Multipul, SpawnPoints[spawnnum].position.y, SpawnPoints[spawnnum].position.z),
                 Quaternion.identity);
 
             offset += 0.16f;
