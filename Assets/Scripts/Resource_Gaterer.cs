@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Resource_Gaterer : MonoBehaviour
 {
-    [SerializeField] int GatheringAmount = 1;
+    [Header("Gatherer Information")]
+    [SerializeField] int GatheringAmount = 1;//amount of gathering done per tick.
     public bool IsPlaceabal = false;
     public bool IsPlacedDown = false;
+
     public bool IsGathering = false;
+    //If we consider gathering a state of the gatherer object than, the gatherer will be considered in 
+    //gathering state (IsGathering = true) if the gatherer object is added into the Gatherelist any one of
+    //the resource node and is considered placeddown.
 
     private void FixedUpdate()
     {
+        //Changes the state of the gatherer to Gathering
         if (IsPlacedDown)
         {
             IsGathering = true;

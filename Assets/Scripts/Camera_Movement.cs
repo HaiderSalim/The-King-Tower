@@ -1,42 +1,95 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Camera_Movement : MonoBehaviour
 {
+    [Header("Mouse Controls Parameters")]
     private float Mousex;
     private float Mousey;
-    //private Camera _camera;
+
     [Header("Camera Movement Paremeters")]
-    [SerializeField] private float Sensitivity = 1f;
-    [SerializeField] private float MapResX;
-    [SerializeField] private float MapResY;
+    [SerializeField] private float PCSensitivity = 1f;
+    [SerializeField] private float MobileSensitivity = 1f;
+    [SerializeField] private SpriteRenderer BackSprite;
+    [SerializeField] private Camera Cam;
+    [SerializeField] private float smoothing = 0.1f;
+
+    private float CamWidth;
+    private float CamHeight;
+    private float MapmaxX;
+    private float MapminX;
+    private float MapmaxY;
+    private float MapminY;
+
+    private void Awake()
+    {
+        Cam = Camera.main;
+    }
 
     private void Start()
     {
-        //_camera = GetComponent<Camera>();
+
+        CamHeight = Cam.orthographicSize;
+        CamWidth = CamHeight * Cam.aspect;
+
+
+        MapminX = BackSprite.bounds.min.x + CamWidth;
+        MapmaxX = BackSprite.bounds.extents.x - CamWidth;
+
+        MapminY = BackSprite.bounds.min.y + CamHeight;
+        MapmaxY = BackSprite.bounds.extents.y - CamHeight;
     }
 
     private void Update()
     {
-        Mousex = Input.GetAxis("Mouse X") * Sensitivity;
-        Mousey = Input.GetAxis("Mouse Y") * Sensitivity;
+        Mousex = Input.GetAxis("Mouse X") * PCSensitivity;
+        Mousey = Input.GetAxis("Mouse Y") * PCSensitivity;
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(1))
+        Vector2 cambounds;
+
+        //Camera Movement Touch Controls
+        if (Input.touchCount > 0)
         {
-            float x = this.transform.position.x + (-Mousex * Time.deltaTime);
-            float y = this.transform.position.y + (-Mousey * Time.deltaTime);
-            x = Mathf.Clamp(x, -PixelsToUnityTransformUnits(MapResX) / 2, PixelsToUnityTransformUnits(MapResX) / 2);
-            y = Mathf.Clamp(y, -PixelsToUnityTransformUnits(MapResY) / 2, PixelsToUnityTransformUnits(MapResY) / 2);
-            this.transform.position = new Vector3(x, y, -10f);
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Moved)
+            {
+                Vector2 touchDeltaPosition = touch.deltaPosition;
+                Vector3 cameraPosition = transform.position;
+
+                // Adjust the camera's position based on touch movement.
+                cameraPosition.x -= touchDeltaPosition.x * MobileSensitivity;
+                cameraPosition.y -= touchDeltaPosition.y * MobileSensitivity;
+
+                //Applay The map Bounds to the camera movement
+                cambounds = GetCameraBounds(cameraPosition.x, cameraPosition.y);
+
+                // Apply the new camera position smoothly using Lerp.
+                transform.position = new Vector3(Mathf.Lerp(transform.position.x, cambounds.x, smoothing * Time.deltaTime),
+                    Mathf.Lerp(transform.position.y, cambounds.y, smoothing * Time.deltaTime),
+                    -10f);
+            }
+        }
+        else
+        {
+            //Camera Movement Mouse Controls
+            if (Input.GetMouseButton(1))
+            {
+                float x = this.transform.position.x + (-Mousex * Time.deltaTime);
+                float y = this.transform.position.y + (-Mousey * Time.deltaTime);
+                cambounds = GetCameraBounds(x, y);
+                this.transform.position = new Vector3(cambounds.x, cambounds.y, -10f);
+            }
         }
     }
 
-    private float PixelsToUnityTransformUnits(float value)
-    {
-        return (value / 100) / 2;
+    private Vector2 GetCameraBounds(float inx, float iny)
+    { 
+        inx = Mathf.Clamp(inx, MapminX, MapmaxX);
+        iny = Mathf.Clamp(iny, MapminY, MapmaxY);
+
+        return new Vector2(inx, iny);
     }
 }
